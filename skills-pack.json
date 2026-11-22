@@ -1,6 +1,6 @@
 {
   "name": "Orric, by Breakra",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "API-contract research for Aeon: watch OpenAPI specs, check PRs and releases for breaking changes with Breakra's deterministic engine (free, local, open source).",
   "author": "danbuildss",
   "license": "MIT",
@@ -14,8 +14,14 @@
       "schedule": "17 7 * * *",
       "default_enabled": false,
       "secrets_required": [],
-      "secrets_optional": ["GH_GLOBAL"],
-      "capabilities": ["read_only", "external_api", "sends_notifications"]
+      "secrets_optional": [
+        "GH_GLOBAL"
+      ],
+      "capabilities": [
+        "read_only",
+        "external_api",
+        "sends_notifications"
+      ]
     },
     {
       "slug": "orric-pr-check",
@@ -25,8 +31,14 @@
       "schedule": "41 */4 * * *",
       "default_enabled": false,
       "secrets_required": [],
-      "secrets_optional": ["GH_GLOBAL"],
-      "capabilities": ["external_api", "writes_external_host", "sends_notifications"]
+      "secrets_optional": [
+        "GH_GLOBAL"
+      ],
+      "capabilities": [
+        "external_api",
+        "writes_external_host",
+        "sends_notifications"
+      ]
     },
     {
       "slug": "orric-release-check",
@@ -36,8 +48,14 @@
       "schedule": "23 8 * * 1",
       "default_enabled": false,
       "secrets_required": [],
-      "secrets_optional": ["GH_GLOBAL"],
-      "capabilities": ["read_only", "external_api", "sends_notifications"]
+      "secrets_optional": [
+        "GH_GLOBAL"
+      ],
+      "capabilities": [
+        "read_only",
+        "external_api",
+        "sends_notifications"
+      ]
     }
   ]
 }
