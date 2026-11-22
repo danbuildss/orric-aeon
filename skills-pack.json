@@ -1,0 +1,43 @@
+{
+  "name": "Orric, by Breakra",
+  "version": "0.1.0",
+  "description": "API-contract research for Aeon: watch OpenAPI specs, check PRs and releases for breaking changes with Breakra's deterministic engine (free, local, open source).",
+  "author": "danbuildss",
+  "license": "MIT",
+  "homepage": "https://breakra.dev",
+  "skills": [
+    {
+      "slug": "orric-watch",
+      "path": "skills/orric-watch",
+      "description": "Watch OpenAPI specs in public or your own GitHub repos; when a spec changes, Breakra classifies the change (BLOCK / REVIEW / SAFE) and Orric reports what matters.",
+      "category": "dev",
+      "schedule": "17 7 * * *",
+      "default_enabled": false,
+      "secrets_required": [],
+      "secrets_optional": ["GH_GLOBAL"],
+      "capabilities": ["read_only", "external_api", "sends_notifications"]
+    },
+    {
+      "slug": "orric-pr-check",
+      "path": "skills/orric-pr-check",
+      "description": "Contract safety for your own repos: for open PRs that change an OpenAPI file, compare base vs head with Breakra and keep one PR comment with the verdict and evidence.",
+      "category": "dev",
+      "schedule": "41 */4 * * *",
+      "default_enabled": false,
+      "secrets_required": [],
+      "secrets_optional": ["GH_GLOBAL"],
+      "capabilities": ["external_api", "writes_external_host", "sends_notifications"]
+    },
+    {
+      "slug": "orric-release-check",
+      "path": "skills/orric-release-check",
+      "description": "Flag a breaking change shipped as a patch or minor release: compares consecutive spec releases (tags or info.version) with Breakra.",
+      "category": "dev",
+      "schedule": "23 8 * * 1",
+      "default_enabled": false,
+      "secrets_required": [],
+      "secrets_optional": ["GH_GLOBAL"],
+      "capabilities": ["read_only", "external_api", "sends_notifications"]
+    }
+  ]
+}
