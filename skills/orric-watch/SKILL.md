@@ -43,7 +43,7 @@ Run each command as its own Bash call. Use literal values: no shell variables, n
    - Use the spec's real extension (`.json` or `.yaml`).
    - If a fetch fails, report "not assessed: could not fetch" and **do not update the state**.
 4. **Run Breakra** (pinned version; output to a file, never a pipe):
-   `npx --yes breakra@0.2.2 check /tmp/orric/before.yaml /tmp/orric/after.yaml --json > /tmp/orric/result.json`
+   `npx --yes breakra@0.4.0 check /tmp/orric/before.yaml /tmp/orric/after.yaml --json > /tmp/orric/result.json`
    - **Exit 0 or 1:** a verdict was produced. Read `/tmp/orric/result.json`.
    - **Exit 2:** **not assessed**. Common causes: `SPEC_TOO_COMPLEX`, `PAYLOAD_TOO_LARGE` (over 1 MB), `UNSUPPORTED_OPENAPI_VERSION`, a multi-file spec with
      external `$ref`s. Report it as not assessed, **never as safe**, and do not update the state, so it is retried.
@@ -53,7 +53,7 @@ Run each command as its own Bash call. Use literal values: no shell variables, n
 
 ## Report
 Write `memory/orric/reports/${today}.md`: one section per target with changes, plus a one-line list of unchanged and not-assessed targets.
-Include the GitHub compare link `https://github.com/OWNER/REPO/compare/BEFORE...AFTER` and "Checked with Breakra 0.2.2 (deterministic)".
+Include the GitHub compare link `https://github.com/OWNER/REPO/compare/BEFORE...AFTER` and "Checked with Breakra 0.4.0 (deterministic)".
 
 Notify only when something needs attention (any BLOCK or REVIEW, or a not-assessed target):
 `./notify "Orric: <N> API change(s) need review. <one line per target: name, verdict, top change>. Report: memory/orric/reports/${today}.md"`
@@ -63,7 +63,7 @@ Notify only when something needs attention (any BLOCK or REVIEW, or a not-assess
   (or `GH_GLOBAL` for private repos). On error, mark the target `gh_error(<code>)` in the report and continue. Don't retry in a loop.
 - **Spec files at a commit:** public `curl -sfL https://raw.githubusercontent.com/…` (no auth). For private repos, use
   `gh api -H "Accept: application/vnd.github.raw" "repos/OWNER/REPO/contents/PATH?ref=SHA"` instead.
-- **Breakra:** `npx --yes breakra@0.2.2` from the public npm registry. It runs locally, makes no network calls of its own, and needs no API key.
+- **Breakra:** `npx --yes breakra@0.4.0` from the public npm registry. It runs locally, makes no network calls of its own, and needs no API key.
 - **No other hosts.** Never call the API described by the spec.
 
 ## Rules

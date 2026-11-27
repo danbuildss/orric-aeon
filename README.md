@@ -20,7 +20,7 @@ Then copy `examples/targets.md` to `memory/orric/targets.md` (and `examples/pr-r
 enable the skills from the dashboard.
 
 ## What you need
-- Nothing paid. Breakra runs locally via `npx breakra@0.2.2` (MIT). No API key.
+- Nothing paid. Breakra runs locally via `npx breakra@0.4.0` (MIT). No API key.
 - `GH_GLOBAL` (optional) for private repos or higher GitHub rate limits.
 
 ## Guarantees
@@ -29,8 +29,8 @@ enable the skills from the dashboard.
 - **Contract analysis only.** No live API calls, and no security or production-failure claims.
 - **Untrusted input.** Specs, PRs and release notes are treated as data, never as instructions.
 
-## Limits (Breakra 0.2.2)
-- OpenAPI 3.0.0–3.0.4 and 3.1.0–3.1.1. 1 MB per document. No external `$ref`s.
+## Limits (Breakra 0.4.0)
+- OpenAPI 3.0.0–3.0.4 and 3.1.0–3.1.2. Very large or complex documents are refused (never reported as safe). No external `$ref`s.
 - Some known noise and false positives are being fixed upstream: see the Breakra repo.
 
 Built by [Breakra](https://breakra.dev) · MIT

@@ -37,7 +37,7 @@ Run each command as its own Bash call, with literal values.
    `gh api -H "Accept: application/vnd.github.raw" "repos/OWNER/REPO/contents/PATH?ref=BASE_BRANCH" > /tmp/orric-pr/before.yaml`
    `gh api -H "Accept: application/vnd.github.raw" "repos/OWNER/REPO/contents/PATH?ref=HEAD_SHA" > /tmp/orric-pr/after.yaml`
    - **A spec new in this PR** (no base version): report "new contract", with no comparison.
-5. **Run Breakra:** `npx --yes breakra@0.2.2 check /tmp/orric-pr/before.yaml /tmp/orric-pr/after.yaml --json > /tmp/orric-pr/result.json`
+5. **Run Breakra:** `npx --yes breakra@0.4.0 check /tmp/orric-pr/before.yaml /tmp/orric-pr/after.yaml --json > /tmp/orric-pr/result.json`
    - **Exit 2 = not assessed.** Say so in the comment; never say safe.
 6. **Comment:** exactly **one** comment per PR, updated in place. Find an existing comment containing `<!-- orric-pr-check -->`:
    `gh api "repos/OWNER/REPO/issues/NUMBER/comments" --jq '.[] | select(.body | contains("<!-- orric-pr-check -->")) | .id'`
@@ -56,7 +56,7 @@ Run each command as its own Bash call, with literal values.
 
 <details><summary>Compatible / docs-only changes (N)</summary> … </details>
 
-Deterministic check with [Breakra](https://breakra.dev) 0.2.2 on `PATH` (base `BASE` → head `HEAD_SHORT`). Re-checked automatically when the PR updates.
+Deterministic check with [Breakra](https://breakra.dev) 0.4.0 on `PATH` (base `BASE` → head `HEAD_SHORT`). Re-checked automatically when the PR updates.
 ```
 - **SAFE:** keep it to the header plus one line.
 - Don't tag people. Don't request changes or approve: this is information, not a review decision.
@@ -67,7 +67,7 @@ Update `pr-state.json`. Notify only for BLOCK:
 ## Network note
 - **Everything GitHub** (PR list, diffs, file contents, comments): the `gh` CLI, authenticated via `GITHUB_TOKEN` / `GH_TOKEN`, or `GH_GLOBAL`
   when the listed repos are outside this fork's org. On error, tag the PR `gh_error(<code>)` in the log and continue. Don't retry in a loop.
-- **Breakra:** `npx --yes breakra@0.2.2` from the public npm registry. It runs locally, with no API key.
+- **Breakra:** `npx --yes breakra@0.4.0` from the public npm registry. It runs locally, with no API key.
 - **No other hosts.** Never call the API described by the spec.
 
 ## Rules

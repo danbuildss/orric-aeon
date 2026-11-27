@@ -1,6 +1,6 @@
 {
   "name": "Orric, by Breakra",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "API-contract research for Aeon: watch OpenAPI specs, check PRs and releases for breaking changes with Breakra's deterministic engine (free, local, open source).",
   "author": "danbuildss",
   "license": "MIT",
